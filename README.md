@@ -86,9 +86,9 @@ gst-launch-1.0 videotestsrc ! decodebin ! videoconvert ! autovideosink
 ```
 Stream webcam video
 ```
-gst-launch-1.0 v4l2src! decodebin ! videoconvert ! autovideosink
+gst-launch-1.0 v4l2src ! decodebin ! videoconvert ! autovideosink
 ```
-Check if gstreamer ueye library is installed
+Check if Gstreamer UEye plugin is installed correctly
 ```
 gst-inspect-1.0 idsueyesrc
 ```
@@ -138,7 +138,7 @@ Play on the same device client with Gstreamer (latency <1s)
 gst-launch-1.0 rtspsrc location=rtsp://127.0.0.1:8554/stream1 latency=0 ! decodebin ! autovideosink
 ```
 
-Play on a different device local network client with Gstreamer (latency <1s)
+Play on a different device in local network with Gstreamer (latency <1s)
 ```
 gst-launch-1.0 rtspsrc location=rtsp://<HOST IP Address>:8554/stream1 latency=0 ! decodebin ! autovideosink
 ```
