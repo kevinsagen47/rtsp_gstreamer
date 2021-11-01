@@ -138,7 +138,7 @@ Play on the same device client with Gstreamer (latency <1s)
 gst-launch-1.0 rtspsrc location=rtsp://127.0.0.1:8554/stream1 latency=0 ! decodebin ! autovideosink
 ```
 
-Play on a different device local network client with Gstreamer (latency <1s)
+Play on a different device in local network with Gstreamer (latency <1s)
 ```
 gst-launch-1.0 rtspsrc location=rtsp://<HOST IP Address>:8554/stream1 latency=0 ! decodebin ! autovideosink
 ```
