@@ -56,6 +56,7 @@ Library used in this project
 
 * [Gstreamer 1.0](https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c)
 * [Gst library: gst-plugins-vision(branch: linux)](https://github.com/joshdoe/gst-plugins-vision/tree/linux)
+* [iDS UEye driver](https://en.ids-imaging.com/downloads.html)
   
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -66,125 +67,95 @@ Library used in this project
   ```sh
   sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
   ```
+2. Install iDS UEye Driver from iDS website https://en.ids-imaging.com/downloads.html 
 
-2. Clone UEye library repo
+3. Clone UEye library repo
    ```sh
    apt-get install git cmake libgstreamer-plugins-base1.0-dev liborc-0.4-dev
    git clone https://github.com/joshdoe/gst-plugins-vision/tree/linux
    unzip gst-plugins-vision-linux.zip 
-   cd gst-plugins-vision
+   cd gst-plugins-vision-linux
    mkdir build
    cd build
+   cmake ..
+   make
+   make install
+   make package
    ```
-3. unzip it
+4. copy .so file to gstreamer library location (current directory: gst-plugins-vision-linux)
    ```sh
-   
+   cp build/sys/idsueye/libgstidsueye.so /usr/local/lib/gstreamer-1.0/
    ```
-4. Enter your API in `config.js`
+5. export library location (on ubuntu 18, you need to repeat this step)
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   export GST_PLUGIN_PATH=/usr/local/lib/gstreamer-1.0
    ```
 
+    
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+
+## Hello Gstreamer
+Example usage of Gstreamer (output test video)
+```
+gst-launch-1.0 videotestsrc ! decodebin ! videoconvert ! autovideosink
+```
+Stream webcam video
+```
+gst-launch-1.0 v4l2src! decodebin ! videoconvert ! autovideosink
+```
+Check if gstreamer ueye library is installed
+```
+gst-inspect-1.0 idsueyesrc
+```
+If installed correctly, output must be:
+```
+Factory Details:
+  Rank                     none (0)
+  Long-name                IDS uEye Video Source
+  Klass                    Source/Video
+  Description              IDS uEye framegrabber video source
+  Author                   Joshua M. Doe <oss@nvl.army.mil>
+
+Plugin Details:
+  Name                     idsueye
+  Description              IDS uEye frame grabber source
+  Filename                 /usr/local/lib/gstreamer-1.0/libgstidsueye.so
+  Version                  HEAD-HASH-NOTFOUND
+  License                  LGPL
+  Source module            gst-plugins-vision package
+  Binary package           gst-plugins-vision
+  Origin URL               Unknown package origin
+
+GObject
+ +----GInitiallyUnowned
+       +----GstObject
+             +----GstElement
+                   +----GstBaseSrc
+                         +----GstPushSrc
+```
+Stream from ueye video
+```
+gst-launch-1.0 idsueyesrc ! decodebin ! videoconvert ! autovideosink
+```
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+#Test gstreamer library
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 
-<!-- ROADMAP -->
-## Roadmap
+<!-- Issues -->
+## Issues
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [] Add Additional Templates w/ Examples
-- [] Add "components" document to easily copy & paste sections of the readme
-- [] Multi-language Support
-    - [] Chinese
-    - [] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+- Unable to stream through VLC, probably due to unsuported codec (error: only real/helix rtsp servers supported for now)
+- Currently unable to change camera setting , i.e. ISO, white balance, exposure (probably can be changed through config.ini file)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
