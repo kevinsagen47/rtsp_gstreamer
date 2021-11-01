@@ -10,7 +10,7 @@ from gi.repository import Gst, GLib,GstApp
 
 _ = GstApp
 
-Gst.init()
+Gst.init(None)
 
 main_loop = GLib.MainLoop()
 thread = Thread(target=main_loop.run)
