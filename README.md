@@ -86,9 +86,9 @@ gst-launch-1.0 videotestsrc ! decodebin ! videoconvert ! autovideosink
 ```
 Stream webcam video
 ```
-gst-launch-1.0 v4l2src! decodebin ! videoconvert ! autovideosink
+gst-launch-1.0 v4l2src ! decodebin ! videoconvert ! autovideosink
 ```
-Check if gstreamer ueye library is installed
+Check if Gstreamer UEye plugin is installed correctly
 ```
 gst-inspect-1.0 idsueyesrc
 ```
