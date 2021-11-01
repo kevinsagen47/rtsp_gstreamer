@@ -130,7 +130,7 @@ Stream ueye camera with OpenCV (without Gstreamer) [code courtesy of Yang-Yi Zhe
 ## Stream on RTSP 
 
 ###  Host
-With Python [code](https://github.com/kevinsagen47/rtsp_gstreamer/blob/main/rtsp_host.py)
+Python [code](https://github.com/kevinsagen47/rtsp_gstreamer/blob/main/rtsp_host.py)
 
 ### Client
 Play on the same device client with Gstreamer (minimal latency)
