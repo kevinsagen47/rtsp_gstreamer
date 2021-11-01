@@ -155,7 +155,7 @@ vlc -v rtsp://127.0.0.1:8554/stream1
 
 
 <!-- Issues -->
-## Known issues
+## Known Issues
 
 - Unable to stream UEye camera through VLC, probably due to unsuported codec (error: only real/helix rtsp servers supported for now)
 - Currently unable to change camera setting , i.e. ISO, white balance, exposure (probably can be changed through config.ini file)
