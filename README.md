@@ -140,10 +140,10 @@ gst-launch-1.0 rtspsrc location=rtsp://127.0.0.1:8554/stream1 latency=0 ! decode
 
 Play on a different device local network client with Gstreamer
 ```
-gst-launch-1.0 rtspsrc location=rtsp://<HOST IP>:8554/stream1 latency=0 ! decodebin ! autovideosink
+gst-launch-1.0 rtspsrc location=rtsp://<HOST IP Address>:8554/stream1 latency=0 ! decodebin ! autovideosink
 ```
 
-Play with OpenCV [code courtesy of Claire](https://github.com/kevinsagen47/rtsp_gstreamer/blob/main/rtsp_stream_client.py)(change "video_path" variable)
+Play with OpenCV [code courtesy of Claire](https://github.com/kevinsagen47/rtsp_gstreamer/blob/main/rtsp_stream_client.py) (change "video_path" variable to host's IP address)
 
 Play with VLC (UEye camera not supported)
 ```
