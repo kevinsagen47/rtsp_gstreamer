@@ -133,17 +133,17 @@ Stream ueye camera with OpenCV (without Gstreamer) [code courtesy of Yang-Yi Zhe
 Python [code](https://github.com/kevinsagen47/rtsp_gstreamer/blob/main/rtsp_host.py)
 
 ### Client
-Play on the same device client with Gstreamer (minimal latency)
+Play on the same device client with Gstreamer (latency <1s)
 ```
 gst-launch-1.0 rtspsrc location=rtsp://127.0.0.1:8554/stream1 latency=0 ! decodebin ! autovideosink
 ```
 
-Play on a different device local network client with Gstreamer
+Play on a different device local network client with Gstreamer (latency <1s)
 ```
 gst-launch-1.0 rtspsrc location=rtsp://<HOST IP Address>:8554/stream1 latency=0 ! decodebin ! autovideosink
 ```
 
-Play with OpenCV [code courtesy of Claire](https://github.com/kevinsagen47/rtsp_gstreamer/blob/main/rtsp_stream_client.py) (change "video_path" variable to host's IP address)
+Play with OpenCV (latency >2s)[code courtesy of Claire](https://github.com/kevinsagen47/rtsp_gstreamer/blob/main/rtsp_stream_client.py) (change "video_path" variable to host's IP address)
 
 Play with VLC (UEye camera not supported)
 ```
