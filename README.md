@@ -26,7 +26,7 @@ Maintained by kevinsagen47@gmail.com
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-### Library Used
+## Library Used
 
 Library used in this project
 
@@ -39,7 +39,7 @@ Miscellaneous: Introduction to Gstreamer https://gist.github.com/velovix/8cbb9bb
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-### Prerequisites
+## Prerequisites
 1. Install Gstreamer (Ubuntu or Debian)
   ```sh
   sudo apt-get install libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
@@ -47,7 +47,7 @@ Miscellaneous: Introduction to Gstreamer https://gist.github.com/velovix/8cbb9bb
 2. Install iDS UEye Driver from iDS website https://en.ids-imaging.com/downloads.html 
 
 
-### Install Gstreamer Plugin (Linux) 
+## Install Gstreamer Plugin (Linux) 
 For Windows, follow [this guide](https://github.com/joshdoe/gst-plugins-vision/tree/master)
 1. Clone UEye library repo 
    ```sh
